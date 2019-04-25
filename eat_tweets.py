@@ -36,10 +36,10 @@ def load_tweets_from_filepaths(filepaths, progressbar=False, n_filepaths=None):
 
 def get_tweettypes(tweet):
     '''
-    extract tweettypes of a tweet and returns tuple of (tweet id, set of types)
+    extract tweettypes of a tweet and returns tuple of (tweet , set of types)
 
     :param dict-like tweet: tweet
-    :returns tuple: (tweet id, set of types), e.g. (1, {'retweet'})
+    :returns tuple: (tweet, set of types), e.g. ({...}, {'retweet'})
     '''
     tweettypes = set()
     if 'retweeted_status' in tweet:
@@ -50,7 +50,7 @@ def get_tweettypes(tweet):
         tweettypes.add('quote')
     if len(tweettypes) == 0:
         tweettypes.add('original')
-    return tweet.get('id'), tweettypes
+    return tweet, tweettypes
 #
 
 def eat_tweettypes(filepaths, keep_tweettypes=['original', 'retweet', 'reply', 'quote'],
@@ -71,9 +71,10 @@ def eat_tweettypes(filepaths, keep_tweettypes=['original', 'retweet', 'reply', '
                                         progressbar=True if n_filepaths else False,
                                         n_filepaths=n_filepaths)
     tweets = filter(subset_func, tweets)
-    tweets = map(get_tweettypes, tweets)
-    tweets = filter(lambda tupl: len(keep_tweettypes.intersection(tupl[1])) > 0, tweets)
-    return tweets
+    tweettypes = map(get_tweettypes, tweets)
+    tweettypes = map(lambda tupl: (tupl[0].get('id'), tupl[1]), tweettypes)
+    tweettypes = filter(lambda tupl: len(keep_tweettypes.intersection(tupl[1])) > 0, tweettypes)
+    return tweettypes
 
 
 def get_attributes(tweet, attributes):
@@ -82,13 +83,13 @@ def get_attributes(tweet, attributes):
 
     :param dict tweet: the tweet object
     :param list attributes: list of attributes to extract, nested attributes separated with '.', e.g. 'user.screen_name'
-    :returns tuple: returns tuple of (tweet ID, [attribute[0], attribute[1], ...])
+    :returns tuple: returns tuple of ({...}, [attribute[0], attribute[1], ...])
     '''
     values = []
     for attribute in attributes:
         keys = attribute.split('.')
         values.append(safe_get(tweet, *keys))
-    return tweet.get('id'), values
+    return tweet, values
 
 
 def eat_tweetattributes(filepaths, ids, attributes, n_filepaths=None):
@@ -106,5 +107,16 @@ def eat_tweetattributes(filepaths, ids, attributes, n_filepaths=None):
                                         progressbar=True if n_filepaths else False,
                                         n_filepaths=n_filepaths)
     tweets = filter(lambda tweet: tweet.get('id') in ids, tweets)
-    tweets = map(functools.partial(get_attributes, attributes=attributes), tweets)
-    return tweets
+    tweetattributes = map(functools.partial(get_attributes, attributes=attributes), tweets)
+    tweetattributes = map(lambda tupl: (tupl[0].get('id'), tupl[1]), tweetattributes)
+    return tweetattributes
+
+
+
+
+## engagement scripting (here you need better tests)
+# load tweets
+#tweets = load_tweets_from_filepaths(filepaths,
+#                                    progressbar=True if n_filepaths else False,
+#                                    n_filepaths=n_filepaths)
+#tweettypes = map(get_tweettypes, tweets)

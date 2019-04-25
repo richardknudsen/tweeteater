@@ -16,7 +16,7 @@ def test_eat_tweettypes():
 def test_get_attributes():
     attributes = ['1', '2.2']
     tweet = {'1': 1, '2': {'2': 2}, 'id': 11}
-    assert get_attributes(tweet, attributes) == (11, [1, 2])
+    assert get_attributes(tweet, attributes) == (tweet, [1, 2])
 
 
 def test_eat_tweetattributes():
