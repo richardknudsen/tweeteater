@@ -1,3 +1,7 @@
 .gitignore
 .idea/
 libraries.sh
+.pytest_cache
+.DS_Store
+.gitignore
+__pycache__/
