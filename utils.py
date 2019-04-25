@@ -16,3 +16,12 @@ def load_pickle(filepath):
 def dump_pickle(filepath, object):
     with open(filepath, 'wb') as file:
         pickle.dump(object, file)
+
+
+def safe_get(dct, *keys):
+    for key in keys:
+        try:
+            dct = dct[key]
+        except KeyError:
+            return None
+    return dct
