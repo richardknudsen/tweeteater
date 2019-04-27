@@ -1,6 +1,6 @@
 import pytest
-from eat_tweets import *
-from utils import *
+from lib.eat_tweets import *
+from lib.utils import *
 
 
 def test_eat_tweettypes():

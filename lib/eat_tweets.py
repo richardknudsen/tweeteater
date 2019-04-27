@@ -2,7 +2,7 @@ import json
 import itertools
 import functools
 from tqdm import tqdm
-from utils import *
+from lib.utils import *
 
 
 def load_tweets_from_filepath(filepath):
@@ -138,7 +138,7 @@ def get_engagements(tupl, ids):
             engagements.append((tweet_id, retweeted_id, 'favourite_count', retweeted_favourite_count))
             engagements.append((tweet_id, retweeted_id, 'retweet_count', retweeted_retweet_count))
     if 'quote' in tweettypes:
-        quoted_id = tweet.get('quoted_status_id')
+        quoted_id = safe_get(tweet, *('quoted_status', 'id'))
         if quoted_id in ids:
             quoted_favourite_count = safe_get(tweet, *('quoted_status', 'favorite_count'))
             quoted_retweet_count = safe_get(tweet, *('quoted_status', 'retweet_count'))
