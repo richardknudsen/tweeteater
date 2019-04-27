@@ -129,28 +129,28 @@ def get_engagements(tupl, ids):
     tweet = tupl[0]
     tweettypes = tupl[1]
     tweet_id = tweet.get('id')
+    tweet_created_at = tweet.get('created_at')
     engagements = []
     if 'retweet' in tweettypes:
         retweeted_id = safe_get(tweet, *('retweeted_status', 'id'))
         if retweeted_id in ids:
             retweeted_favourite_count = safe_get(tweet, *('retweeted_status', 'favorite_count'))
             retweeted_retweet_count = safe_get(tweet, *('retweeted_status', 'retweet_count'))
-            engagements.append((tweet_id, retweeted_id, 'favourite_count', retweeted_favourite_count))
-            engagements.append((tweet_id, retweeted_id, 'retweet_count', retweeted_retweet_count))
+            engagements.append((tweet_created_at, tweet_id, retweeted_id, 'favourite_count', retweeted_favourite_count))
+            engagements.append((tweet_created_at, tweet_id, retweeted_id, 'retweet_count', retweeted_retweet_count))
     if 'quote' in tweettypes:
         quoted_id = safe_get(tweet, *('quoted_status', 'id'))
         if quoted_id in ids:
             quoted_favourite_count = safe_get(tweet, *('quoted_status', 'favorite_count'))
             quoted_retweet_count = safe_get(tweet, *('quoted_status', 'retweet_count'))
-            engagements.append((tweet_id, quoted_id, 'favourite_count', quoted_favourite_count))
-            engagements.append((tweet_id, quoted_id, 'retweet_count', quoted_retweet_count))
-            engagements.append((tweet_id, quoted_id, 'quote', 1))
+            engagements.append((tweet_created_at, tweet_id, quoted_id, 'favourite_count', quoted_favourite_count))
+            engagements.append((tweet_created_at, tweet_id, quoted_id, 'retweet_count', quoted_retweet_count))
+            engagements.append((tweet_created_at, tweet_id, quoted_id, 'quote', 1))
     if 'reply' in tweettypes:
         replied_to_id = tweet.get('in_reply_to_status_id')
         if replied_to_id in ids:
-            engagements.append((tweet_id, replied_to_id, 'reply', 1))
+            engagements.append((tweet_created_at, tweet_id, replied_to_id, 'reply', 1))
     return engagements
-
 
 
 def eat_engagements(filepaths, ids, n_filepaths=None):
