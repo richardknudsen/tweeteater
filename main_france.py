@@ -9,8 +9,9 @@ if __name__ == '__main__':
     OUTPUT_DIRECTORY = '/Users/richardknudsen/Dropbox/Dokumente_Richard/RA_upf/prep_hannah/data/'
 
     # subset for politicians
-    pt = '/Users/richardknudsen/Downloads/france_target_screennames_v2.csv'
-    politicians_screennames = set(pd.read_csv(pt, header=None)[0].tolist())
+    pt = '/Users/richardknudsen/Downloads/handles_v2.csv'
+    politicians_screennames = pd.read_csv(pt, header=None, engine='python')[0].tolist()
+    politicians_screennames = set([x.replace(' ', '') for x in politicians_screennames])
     subset_func = lambda tweet: safe_get(tweet, *('user', 'screen_name')) in politicians_screennames
 
     # keep original tweets only
