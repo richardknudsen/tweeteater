@@ -4,14 +4,13 @@ from lib.utils import *
 
 
 if __name__ == '__main__':
-    TWEET_DIRECTORY = '/Volumes/Data/mt_data/fr/json_cleaned'
+    TWEET_DIRECTORY = '/Volumes/Data/mt_data/ger'
     EXT = '.jsonl'
-    OUTPUT_DIRECTORY = '/Users/richardknudsen/Dropbox/Dokumente_Richard/RA_upf/prep_hannah/data/'
+    OUTPUT_DIRECTORY = '/Users/richardknudsen/Dropbox/twitter_shared_data/ger_processed/'
 
     # subset for politicians
-    pt = '/Users/richardknudsen/Downloads/handles_v3.csv'
-    politicians_screennames = pd.read_csv(pt, header=None, engine='python')[0].tolist()
-    politicians_screennames = set([x.replace(' ', '') for x in politicians_screennames])
+    pt = 'sample_data/screenname2party.json'
+    politicians_screennames = set([scn for scn, party in load_json(pt).items()])
     subset_func = lambda tweet: safe_get(tweet, *('user', 'screen_name')) in politicians_screennames
 
     # keep original tweets only
