@@ -127,8 +127,7 @@ def eat_tweets(filepaths, attributes, keep_tweettypes=['original', 'retweet', 'r
     # initial setup
     if not isinstance(keep_tweettypes, set): keep_tweettypes = set(keep_tweettypes)
     assert keep_tweettypes.issubset(set(['original', 'retweet', 'reply', 'quote']))
-    attributes.insert(0, 'tweettypes')
-    attributes.insert(0, 'id')
+    attributes = ['id', 'tweettypes'] + attributes
 
     # load tweets
     tweets = load_tweets_from_filepaths(filepaths,#

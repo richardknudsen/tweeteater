@@ -31,7 +31,7 @@ def do_main(tweet_directory,
     tweets = eat_tweets(filepaths, attributes, keep_tweettypes=keep_tweettypes,
                         subset_func=subset_func, n_filepaths=n_filepaths)
     tweets = pd.DataFrame(tweets)
-    tweets.columns = attributes
+    tweets.columns = ['id', 'tweettypes'] + attributes
     tweets.drop_duplicates(subset=['id'], inplace=True)
     tweets.to_csv(output_directory + 'tweets.csv', index=False)
 
@@ -48,7 +48,7 @@ def do_main(tweet_directory,
     engagements.drop_duplicates(subset=['observed in tweet.id', 'tweet.id', 'engagement type'],inplace=True)
     engagements.to_csv(output_directory + 'engagements.csv', index=False)
 
-    return
+    return tweets, engagements
 
 
 if __name__ == '__main__':
@@ -64,9 +64,7 @@ if __name__ == '__main__':
     SUBSET_FUNC = lambda tweet: safe_get(tweet, *('user', 'screen_name')) in politicians_screennames
 
     # go
-    attributes = ['created_at', 'user.screen_name', 'user.name', 'user.favourites_count', 'text', 'lang']
     do_main(tweet_directory=TWEET_DIRECTORY,
             extension=EXTENSION,
             output_directory=OUTPUT_DIRECTORY,
-            subset_func=SUBSET_FUNC,
-            attributes=attributes)
+            subset_func=SUBSET_FUNC)
