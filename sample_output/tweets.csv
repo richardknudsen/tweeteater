@@ -1,22 +1,22 @@
-,id,created_at,user.screen_name,user.name,text,lang
-0,899693900402745345,Mon Aug 21 18:05:16 +0000 2017,PaulSch72969276,Paul Schmidt,"#Gruene #SPD #CDU hassen uns #Deutschland #BTW17 #AFD
+id,tweettypes,created_at,user.screen_name,user.name,user.favourites_count,text,lang
+899693900402745345,{'original'},Mon Aug 21 18:05:16 +0000 2017,PaulSch72969276,Paul Schmidt,7210,"#Gruene #SPD #CDU hassen uns #Deutschland #BTW17 #AFD
 https://t.co/LraPLkwUyb",de
-1,899694525454700544,Mon Aug 21 18:07:45 +0000 2017,CDU,CDU Deutschlands,Gestern waren die Nachbarn auf einen Plausch mit Angela Merkel im #fedidwgugl Haus: https://t.co/rSjeFZDynM,de
-2,899700409391960064,Mon Aug 21 18:31:07 +0000 2017,AfD_Bund,Alternative für 🇩🇪,"Video der Pressekonferenz zum asyl- &amp; entwicklungspol. Konzept der #AfD mit @Alice_Weidel &amp; Alexander #Gauland:
+899694525454700544,{'original'},Mon Aug 21 18:07:45 +0000 2017,CDU,CDU Deutschlands,2249,Gestern waren die Nachbarn auf einen Plausch mit Angela Merkel im #fedidwgugl Haus: https://t.co/rSjeFZDynM,de
+899700409391960064,{'original'},Mon Aug 21 18:31:07 +0000 2017,AfD_Bund,Alternative für 🇩🇪,5610,"Video der Pressekonferenz zum asyl- &amp; entwicklungspol. Konzept der #AfD mit @Alice_Weidel &amp; Alexander #Gauland:
 https://t.co/nWuhZKifQF",de
-3,899680570015395840,Mon Aug 21 17:12:17 +0000 2017,GrueneSchmeding,Martin Schmeding,5.9 Redaktionsgespräch beim #Südkurier mit BaWü-#Sozialminister @ManneLucha und BTKandidat @GrueneSchmeding #BTW17 https://t.co/7gBOh2mDYm,de
-4,899681695099695104,Mon Aug 21 17:16:46 +0000 2017,GrueneSchmeding,Martin Schmeding,7.9 kommt unsere #Landesvorsitzende @detzer_sandra nach #Konstanz. Wir machen eine Radtour auf die #Reichenau… https://t.co/5TcSChVwMA,de
-5,899686353654493184,Mon Aug 21 17:35:16 +0000 2017,TabeaRoessner,Tabea Rößner,Nach dem @aznachrichten - Interview kann ich mich vor Massage-Anfragen kaum noch retten. Schaut selbst. :-) #btw17 https://t.co/T9HLSL1A3x,de
-6,899688232811601924,Mon Aug 21 17:42:44 +0000 2017,winklerfdp,Philip Winkler,"Hier findet ihr meine Antworten zu den Fragen von Demokratie wagen Gütersloh
+899680570015395840,{'original'},Mon Aug 21 17:12:17 +0000 2017,GrueneSchmeding,Martin Schmeding,160,5.9 Redaktionsgespräch beim #Südkurier mit BaWü-#Sozialminister @ManneLucha und BTKandidat @GrueneSchmeding #BTW17 https://t.co/7gBOh2mDYm,de
+899681695099695104,{'original'},Mon Aug 21 17:16:46 +0000 2017,GrueneSchmeding,Martin Schmeding,160,7.9 kommt unsere #Landesvorsitzende @detzer_sandra nach #Konstanz. Wir machen eine Radtour auf die #Reichenau… https://t.co/5TcSChVwMA,de
+899686353654493184,{'original'},Mon Aug 21 17:35:16 +0000 2017,TabeaRoessner,Tabea Rößner,328,Nach dem @aznachrichten - Interview kann ich mich vor Massage-Anfragen kaum noch retten. Schaut selbst. :-) #btw17 https://t.co/T9HLSL1A3x,de
+899688232811601924,{'original'},Mon Aug 21 17:42:44 +0000 2017,winklerfdp,Philip Winkler,1,"Hier findet ihr meine Antworten zu den Fragen von Demokratie wagen Gütersloh
 https://t.co/yctLvwGytW
 
 #demokratie #btw17 #fdp #gütersloh",de
-7,899688715731259393,Mon Aug 21 17:44:39 +0000 2017,PaulSch72969276,Paul Schmidt,"Schweizer #Medien erklären deutschen #Medien die #Demokratie u #Meinungsfreiheit Danke!!! #netzDG #BTW17 @ARD @ZDF
+899688715731259393,{'original'},Mon Aug 21 17:44:39 +0000 2017,PaulSch72969276,Paul Schmidt,7210,"Schweizer #Medien erklären deutschen #Medien die #Demokratie u #Meinungsfreiheit Danke!!! #netzDG #BTW17 @ARD @ZDF
 https://t.co/WWyLVsF0h0",de
-8,899688753136095232,Mon Aug 21 17:44:48 +0000 2017,fdp_nrw,FDP NRW,Der @c_lindner ist am Donnerstag in #Lüdenscheid. Kommt vorbei! #onTour #NRW #BTW17 #DenkenWirNeu https://t.co/pFc49NgLIP,de
-9,899688924880273410,Mon Aug 21 17:45:29 +0000 2017,PaulSch72969276,Paul Schmidt,#Silvester in #Köln – Schattenseite des Kulturimports: Phallisch aggressives Verhalten #BTW17 #fedidwgugl https://t.co/ynHliRt2P5 via @NZZ,de
-10,899689564847124483,Mon Aug 21 17:48:02 +0000 2017,PaulSch72969276,Paul Schmidt,"Umgang mit der #AfD: Zumutung für Deutschland 
+899688753136095232,{'original'},Mon Aug 21 17:44:48 +0000 2017,fdp_nrw,FDP NRW,1092,Der @c_lindner ist am Donnerstag in #Lüdenscheid. Kommt vorbei! #onTour #NRW #BTW17 #DenkenWirNeu https://t.co/pFc49NgLIP,de
+899688924880273410,{'original'},Mon Aug 21 17:45:29 +0000 2017,PaulSch72969276,Paul Schmidt,7210,#Silvester in #Köln – Schattenseite des Kulturimports: Phallisch aggressives Verhalten #BTW17 #fedidwgugl https://t.co/ynHliRt2P5 via @NZZ,de
+899689564847124483,{'original'},Mon Aug 21 17:48:02 +0000 2017,PaulSch72969276,Paul Schmidt,7210,"Umgang mit der #AfD: Zumutung für Deutschland 
 #Demokratie #Hetze #Zensur #BTW17
 https://t.co/8hMIUvSbem via @NZZ",de
-11,899692854142009344,Mon Aug 21 18:01:06 +0000 2017,PaulSch72969276,Paul Schmidt,"#Merkel #Islam #Islamismus #BTW17 
+899692854142009344,{'original'},Mon Aug 21 18:01:06 +0000 2017,PaulSch72969276,Paul Schmidt,7210,"#Merkel #Islam #Islamismus #BTW17 
 https://t.co/LraPLkwUyb",und
