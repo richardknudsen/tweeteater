@@ -10,7 +10,7 @@ def do_main(tweet_directory,
             subset_func=lambda tweet: True,
             keep_tweettypes=['original'],
             attributes=['created_at', 'user.screen_name', 'user.name', 'user.favourites_count',
-                        'text', 'extended_tweet.full_text', 'lang',]):
+                        'text', 'extended_tweet.full_text', 'lang']):
     '''
     extracts (optional: a subset) of all tweets in the tweet directory with specified attributes. also
     extracts engagements towards those tweets. stores output as .csvs
