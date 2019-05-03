@@ -14,7 +14,7 @@ env.yml contains an export of my Anaconda environment.
 ## some documentation
 
 - illustrative-notebook.ipynb is an illustrative notebook showing how to use the the library
-- main_france.py is the script used to collect the france data (illustrative also)
+- main.py contains a wrapper around the full functionality and an exemplary script
 - test_stuff.py contains some tests
 
 
