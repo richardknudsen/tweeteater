@@ -8,3 +8,4 @@ __pycache__/
 .ipynb_checkpoints/
 libraries.sh
 main_ger.py
+main_fr.py
