@@ -41,12 +41,13 @@ def do_main(tweet_directory,
     engagements = eat_engagements(filepaths, tweets['id'], n_filepaths=n_filepaths)
 
     engagements = pd.DataFrame(engagements)
-    engagements.columns = ['observed timestamp', 'observed in tweet.id', 'tweet.id', 'engagement type', 'count']
+    engagements.columns = ['engagement_created_at', 'engagement_id', 'engagement_screen_name',
+                           'original_tweet_id', 'engagement_type', 'engagement_count']
     tweetid2screenname = dict(zip(tweets['id'], tweets['user.screen_name']))
     tweetid2createdat = dict(zip(tweets['id'], tweets['created_at']))
-    engagements['user.screen_name'] = [tweetid2screenname[id_] for id_ in engagements['tweet.id']]
-    engagements['created_at'] = [tweetid2createdat[id_]for id_ in engagements['tweet.id']]
-    engagements.drop_duplicates(subset=['observed in tweet.id', 'tweet.id', 'engagement type'],inplace=True)
+    engagements['original_tweet_screen_name'] = [tweetid2screenname[id_] for id_ in engagements['original_tweet_id']]
+    engagements['original_tweet_created_at'] = [tweetid2createdat[id_]for id_ in engagements['original_tweet_id']]
+    engagements.drop_duplicates(subset=['engagement_id', 'original_tweet_id', 'engagement_type'], inplace=True)
     engagements.to_csv(output_directory + 'engagements.csv', index=False)
 
     return tweets, engagements

@@ -37,22 +37,26 @@ def test_eat_tweets():
 def test_get_engagements():
     ids = [2, 3]
     tweet1 = {'id': 1,
+              'user': {'screen_name': 'blub1'},
               'created_at': '01',
               'retweeted_status': {'id': 2, 'favorite_count': 3, 'retweet_count': 4},
               'in_reply_to_status_id': None}
     tweet2 = {'id': 1,
+              'user': {'screen_name': 'blub1'},
               'created_at': '01',
               'retweeted_status': {'id': 0, 'favorite_count': 3, 'retweet_count': 4},
               'in_reply_to_status_id': None}
     tweet3 = {'id': 4,
+              'user': {'screen_name': 'blub1'},
               'created_at': '01',
               'quoted_status_id': 2,
               'quoted_status': {'id': 2, 'favorite_count': 7, 'retweet_count': 8},
               'in_reply_to_status_id': 3}
-    assert get_engagements(get_tweettypes(tweet1), ids=ids) == [('01', 1, 2, 'favourite_count', 3),
-                                                                ('01', 1, 2, 'retweet_count', 4)]
+    assert get_engagements(get_tweettypes(tweet1), ids=ids) == [('01', 1, None, 2, 'favourite_count', 3),
+                                                                ('01', 1, None, 2, 'retweet_count', 4),
+                                                                ('01', 1, 'blub1', 2, 'retweet', 1)]
     assert get_engagements(get_tweettypes(tweet2), ids=ids) == []
-    assert get_engagements(get_tweettypes(tweet3), ids=ids) == [('01', 4, 2, 'favourite_count', 7),
-                                                                ('01', 4, 2, 'retweet_count', 8),
-                                                                ('01', 4, 2, 'quote', 1),
-                                                                ('01', 4, 3, 'reply', 1)]
+    assert get_engagements(get_tweettypes(tweet3), ids=ids) == [('01', 4, None, 2, 'favourite_count', 7),
+                                                                ('01', 4, None, 2, 'retweet_count', 8),
+                                                                ('01', 4, 'blub1', 2, 'quote', 1),
+                                                                ('01', 4, 'blub1', 3, 'reply', 1)]

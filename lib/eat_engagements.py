@@ -15,28 +15,30 @@ def get_engagements(tweet, ids):
                             counts as contained in tweet objects, 'reply' and 'quote' are simple in-sample
                             counts and hence, on the level of a single tweet, always equal to one.
     '''
-    tweet_id = tweet.get('id')
-    tweet_created_at = tweet.get('created_at')
+    id_ = tweet.get('id')
+    created_at = tweet.get('created_at')
+    user_screenname = safe_get(tweet, *('user', 'screen_name'))
     engagements = []
     if 'retweet' in tweet.get('tweettypes'):
         retweeted_id = safe_get(tweet, *('retweeted_status', 'id'))
         if retweeted_id in ids:
             retweeted_favourite_count = safe_get(tweet, *('retweeted_status', 'favorite_count'))
             retweeted_retweet_count = safe_get(tweet, *('retweeted_status', 'retweet_count'))
-            engagements.append((tweet_created_at, tweet_id, retweeted_id, 'favourite_count', retweeted_favourite_count))
-            engagements.append((tweet_created_at, tweet_id, retweeted_id, 'retweet_count', retweeted_retweet_count))
+            engagements.append((created_at, id_, None, retweeted_id, 'favourite_count', retweeted_favourite_count))
+            engagements.append((created_at, id_, None, retweeted_id, 'retweet_count', retweeted_retweet_count))
+            engagements.append((created_at, id_, user_screenname, retweeted_id, 'retweet', 1))
     if 'quote' in tweet.get('tweettypes'):
         quoted_id = safe_get(tweet, *('quoted_status', 'id'))
         if quoted_id in ids:
             quoted_favourite_count = safe_get(tweet, *('quoted_status', 'favorite_count'))
             quoted_retweet_count = safe_get(tweet, *('quoted_status', 'retweet_count'))
-            engagements.append((tweet_created_at, tweet_id, quoted_id, 'favourite_count', quoted_favourite_count))
-            engagements.append((tweet_created_at, tweet_id, quoted_id, 'retweet_count', quoted_retweet_count))
-            engagements.append((tweet_created_at, tweet_id, quoted_id, 'quote', 1))
+            engagements.append((created_at, id_, None, quoted_id, 'favourite_count', quoted_favourite_count))
+            engagements.append((created_at, id_, None, quoted_id, 'retweet_count', quoted_retweet_count))
+            engagements.append((created_at, id_, user_screenname, quoted_id, 'quote', 1))
     if 'reply' in tweet.get('tweettypes'):
         replied_to_id = tweet.get('in_reply_to_status_id')
         if replied_to_id in ids:
-            engagements.append((tweet_created_at, tweet_id, replied_to_id, 'reply', 1))
+            engagements.append((created_at, id_, user_screenname, replied_to_id, 'reply', 1))
     return engagements
 
 
