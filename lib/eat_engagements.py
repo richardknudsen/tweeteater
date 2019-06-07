@@ -2,18 +2,26 @@ from lib.eat_tweets import *
 
 def get_engagements(tweet, ids):
     '''
-    workhorse of engagement extraction. extracts engagements from a tweet.
+    workhorse of engagement extraction. extracts engagements from a tweet towards a list of target tweets
+    specified by the ids
 
     :param dict tweet: single tweet
     :param list ids: list the tweet ids with respect to which engagements are extracted (usually 'original' tweets)
     :returns list of tuples: engagement information extract from the single tweet, that is
-                            [(tweet ID, tweettypes, tweet ID of reference tweet, engagement type, value), ...], e.g.
-                            [(1, 2, 'favourite_count', 1), ('1', '2', 'retweet_count', 4)], meaning tweet
-                            1 contains the information that the favourite count of tweet 2 is 2 and the
-                            retweet count is 4 at the time tweet 1 was made. engagement types can be
-                            'favourite_count', 'retweet_count', 'reply', or 'quote'. The counts represent
-                            counts as contained in tweet objects, 'reply' and 'quote' are simple in-sample
-                            counts and hence, on the level of a single tweet, always equal to one.
+                             [('engagement_created_at', 'engagement_id', 'engagement_screen_name',
+                             'original_tweet_id', 'engagement_type', 'engagement_count'), ...],
+
+                             e.g.
+                             [('2019-08-07 00:00:00', 1, NA, 4, 'favourite_count', 3)],
+                             meaning the tweet with id 1 contains the information that the favourite count of the tweet
+                             with id 4 was 3 at time '2019-08-07 00:00:00'.
+
+                             'engagement_type' is one of 'favourite_count', 'retweet_count', 'reply', 'retweet' or
+                             'quote'. The counts represent truly observed counts. 'reply', 'quote' and 'retweet'
+                             represent an insample engagement and hence 'engagement_count' = 1 for those values.
+
+                             since the engagements cannot be attributed for the counts, 'engagement_screen_name'
+                             is None for those rows.
     '''
     id_ = tweet.get('id')
     created_at = tweet.get('created_at')

@@ -15,6 +15,22 @@ def do_main(tweet_directory,
     extracts (optional: a subset) of all tweets in the tweet directory with specified attributes. also
     extracts engagements towards those tweets. stores output as .csvs
 
+    tweets are stored in a csv where each column represents a tweet
+
+    engagements are stored in a csv where each row is either an engagement or the observation of an engagement count,
+    with the following columns:
+
+        'engagement_created_at': the time when the engagement or the engagement count was observed
+        'engagement_id': the id of the tweet in which the engagement or the engagement count was observed
+        'engagement_screen_name': the screen name of the user engaging, if 'engagement_type' is one of
+                                  {'reply', 'quote', 'count'}
+        'original_tweet_id': the id of the tweet that was engaged upon
+        'engagement_type': one of {'favourite_count', 'retweet_count', 'reply', 'retweet', 'quote'}
+                           The counts represent truly observed counts. 'reply', 'quote' and 'retweet'
+                           represent an insample engagement and hence 'engagement_count' = 1 for those values.
+        'engagement_count': the engagement count
+
+
     :param str tweet_directory: directory with tweetfiles
     :param str extension: extension of tweetfiles in tweet_directory, e.g. '.jsonl'
     :param str output_directory: where 'tweets.csv' and 'engagements.csv' will be dumped
@@ -55,12 +71,13 @@ def do_main(tweet_directory,
 
 if __name__ == '__main__':
 
-    # args 0: directories
-    TWEET_DIRECTORY = 'sample_data'
-    EXTENSION = '.jsonl'
-    OUTPUT_DIRECTORY = 'sample_output'
+    # define directories
+    TWEET_DIRECTORY = 'sample_data' # the directory with the tweet files
+    EXTENSION = '.jsonl' # the extension of the tweetfiles
+    OUTPUT_DIRECTORY = 'sample_output' # the directory where the output
 
-    # arg 1: custom subsetting for tweet by politicians only
+    # define custom subsetting function, in this case, only consider tweets for which "user.screen_name"
+    # is in a target set of screen names of politicians
     pt = 'sample_data/screenname2party.json'
     politicians_screennames = set([scn for scn, party in load_json(pt).items()])
     SUBSET_FUNC = lambda tweet: safe_get(tweet, *('user', 'screen_name')) in politicians_screennames
